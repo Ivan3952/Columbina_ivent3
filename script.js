@@ -8,6 +8,7 @@ var bgMusic = document.getElementById("bg-music");
 var currentPage = 0;
 var WORKS_PER_PAGE = 12;
 var triedAutoplay = false;
+var isRouting = false;
 
 function escapeHtml(value) {
   return String(value == null ? "" : value)
@@ -47,8 +48,12 @@ function urlFor(route) {
   return window.location.pathname + "?page=" + route;
 }
 
+function setAppHtml(html) {
+  app.innerHTML = html;
+}
+
 function renderHome() {
-  app.innerHTML =
+  setAppHtml(
     '<section class="home">' +
       '<div class="cover-shell">' +
         '<div class="cover-card">' +
@@ -62,11 +67,12 @@ function renderHome() {
           '</div>' +
         '</div>' +
       '</div>' +
-    '</section>';
+    '</section>'
+  );
 }
 
 function renderResultsMenu() {
-  app.innerHTML =
+  setAppHtml(
     '<section class="page">' +
       '<div class="page-head">' +
         '<div>' +
@@ -91,13 +97,14 @@ function renderResultsMenu() {
           '<span>' + WORKS.length + ' работ</span>' +
         '</a>' +
       '</div>' +
-    '</section>';
+    '</section>'
+  );
 }
 
 function renderWinners() {
   var winners = getWinners();
 
-  app.innerHTML =
+  setAppHtml(
     '<section class="page">' +
       '<div class="page-head">' +
         '<div>' +
@@ -110,7 +117,8 @@ function renderWinners() {
 
       (winners.length ? '<div class="works-grid winners-grid">' + winners.map(renderWorkCard).join("") + '</div>' :
       '<div class="empty">Победители пока не добавлены в <b>data.js</b>.</div>') +
-    '</section>';
+    '</section>'
+  );
 
   attachImageHandlers();
 }
@@ -126,7 +134,7 @@ function renderAllWorksPage() {
   var start = currentPage * WORKS_PER_PAGE;
   var pageWorks = works.slice(start, start + WORKS_PER_PAGE);
 
-  app.innerHTML =
+  setAppHtml(
     '<section class="page">' +
       '<div class="page-head">' +
         '<div>' +
@@ -145,7 +153,8 @@ function renderAllWorksPage() {
         '<span class="page-counter">' + (currentPage + 1) + ' / ' + totalPages + '</span>' +
         '<button class="main-btn small" id="next-page" type="button">Дальше →</button>' +
       '</div>' +
-    '</section>';
+    '</section>'
+  );
 
   var prev = document.getElementById("prev-page");
   var next = document.getElementById("next-page");
@@ -208,11 +217,7 @@ function renderWorkCard(work) {
   );
 }
 
-function routeTo(route, push) {
-  if (push) {
-    window.history.pushState({}, "", urlFor(route));
-  }
-
+function renderByRoute(route) {
   if (route === "results") {
     renderResultsMenu();
     return;
@@ -229,6 +234,30 @@ function routeTo(route, push) {
   }
 
   renderHome();
+}
+
+function routeTo(route, push) {
+  if (isRouting) return;
+  isRouting = true;
+
+  if (push) {
+    window.history.pushState({}, "", urlFor(route));
+  }
+
+  app.classList.remove("route-enter");
+  app.classList.add("route-exit");
+
+  window.setTimeout(function() {
+    renderByRoute(route);
+
+    app.classList.remove("route-exit");
+    app.classList.add("route-enter");
+
+    window.setTimeout(function() {
+      app.classList.remove("route-enter");
+      isRouting = false;
+    }, 540);
+  }, 260);
 }
 
 function setupNavigation() {
@@ -337,5 +366,6 @@ if (musicButton && bgMusic) {
 }
 
 setupNavigation();
-routeTo(getRouteFromUrl(), false);
+renderByRoute(getRouteFromUrl());
+app.classList.add("route-enter");
 tryStartMusic();
