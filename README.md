@@ -1,20 +1,16 @@
-# Обновление Moon Maiden
+# Columbina final upgrade
 
-## Что меняет обновление
+Файлы:
+- style-columbina-final.css
+- script.js
 
-1. Обложка `img/cover.png` становится фоном на всех вкладках.
-2. На главной обложка растягивается на весь экран.
-3. Переходы между страницами идут с плавным fade/blur эффектом.
-4. Музыка не должна сбрасываться при переходах, потому что навигация остаётся без перезагрузки страницы.
+Как поставить:
+1. Загрузи `style-columbina-final.css` в репозиторий.
+2. Полностью замени текущий `script.js`.
+3. В index.html подключи:
+<link rel="stylesheet" href="style-columbina-final.css?v=1" />
+<script src="script.js?v=3"></script>
 
-## Как поставить
-
-1. Загрузи `style-moon-cover.css` в репозиторий.
-2. Замени текущий `script.js` на файл из архива.
-3. В `index.html` замени строку CSS на:
-
-<link rel="stylesheet" href="style-moon-cover.css?v=1" />
-
-4. Внизу index.html лучше обнови версию скрипта:
-
-<script src="script.js?v=2"></script>
+В data.js желательно:
+EVENT.title = "COLUMBINA"
+EVENT.subtitle = "Итоги ивента"
