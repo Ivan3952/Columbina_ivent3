@@ -2,10 +2,10 @@
 // Оценка: одна оценка по 10-балльной шкале, без комментариев.
 
 const EVENT = {
-  title: "Moon Maiden",
-  subtitle: "Итоги арт-ивента",
+  title: "COLUMBINA",
+  subtitle: "Итоги ивента",
   cover: "img/cover.png",
-  stats: "победители • участники • оценки по 10-балльной шкале"
+  stats: ""
 };
 
 const WORKS = [
