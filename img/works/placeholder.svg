@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+<defs>
+<radialGradient id="g" cx="50%" cy="42%" r="70%">
+<stop offset="0%" stop-color="#33416a"/>
+<stop offset="50%" stop-color="#171126"/>
+<stop offset="100%" stop-color="#05040b"/>
+</radialGradient>
+<linearGradient id="l" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#ff5fd7" stop-opacity=".35"/>
+<stop offset="50%" stop-color="#ffd76a" stop-opacity=".25"/>
+<stop offset="100%" stop-color="#63e7ff" stop-opacity=".35"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="800" fill="url(#g)"/>
+<rect width="1200" height="800" fill="url(#l)"/>
+<g opacity=".65" fill="#fff">
+<circle cx="120" cy="120" r="2"/><circle cx="260" cy="210" r="2"/><circle cx="930" cy="130" r="2"/><circle cx="1020" cy="610" r="2"/><circle cx="610" cy="98" r="2"/>
+</g>
+<text x="50%" y="47%" fill="#ffd76a" text-anchor="middle" font-size="66" font-family="Georgia" font-weight="700">ART PLACEHOLDER</text>
+<text x="50%" y="56%" fill="#d8c6e8" text-anchor="middle" font-size="28" font-family="Arial">замени файл на работу участника</text>
+</svg>
