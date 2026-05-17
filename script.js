@@ -184,7 +184,7 @@ function renderResultsMenu() {
         '<a class="menu-card menu-card--all" href="' + urlFor("all") + '" data-route="all">' +
           '<div class="menu-card__mark">Hall II</div>' +
           '<h3>Все работы участников</h3>' +
-          '<p>Полный архив ивента с оценками по 10-балльной шкале.</p>' +
+          '<p>Архив ивента</p>' +
           '<span>' + WORKS.length + ' работ</span>' +
         '</a>' +
 
@@ -246,7 +246,6 @@ function renderWinnersPage() {
           '<a class="back" href="' + urlFor("results") + '" data-route="results">← Назад к итогам</a>' +
           '<div class="kicker">columbina awards</div>' +
           '<h2>Работы победителей</h2>' +
-          '<p>Главная витрина ивента: места, оценки и награды. Для стабильности показываем по ' + WINNERS_PER_PAGE + ' работ на странице.</p>' +
         '</div>' +
       '</div>' +
       content +
@@ -301,7 +300,6 @@ function renderAllWorksPage() {
           '<a class="back" href="' + urlFor("results") + '" data-route="results">← Назад к итогам</a>' +
           '<div class="kicker">complete archive</div>' +
           '<h2>Все работы участников</h2>' +
-          '<p>Оценка выставлялась по 10-балльной шкале, без комментариев.</p>' +
         '</div>' +
       '</div>' +
 
@@ -328,7 +326,6 @@ function renderAllWorksPage() {
 
       '<div class="thanks-block">' +
         '<h3>Спасибо всем участникам ' + escapeHtml(getEventTitle()) + '.</h3>' +
-        '<p>Каждая работа стала частью архива.</p>' +
       '</div>' +
     '</section>'
   );
