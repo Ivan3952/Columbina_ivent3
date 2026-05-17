@@ -637,33 +637,22 @@ document.addEventListener("keydown", function(event) {
 function updateMusicButton(isPlaying) {
   if (!musicButton) return;
 
+  musicButton.textContent = "♪";
+  musicButton.setAttribute("aria-label", isPlaying ? "Музыка включена" : "Музыка выключена");
+
   if (isPlaying) {
-    musicButton.textContent = "♪ Музыка: вкл";
     musicButton.classList.remove("is-muted");
     musicButton.classList.add("is-playing");
   } else {
-    musicButton.textContent = "♪ Музыка";
     musicButton.classList.remove("is-playing");
     musicButton.classList.add("is-muted");
   }
 }
 
 function tryStartMusic() {
-  if (!bgMusic || triedAutoplay) return;
-  triedAutoplay = true;
-
-  bgMusic.volume = 0.35;
-
-  var playPromise = bgMusic.play();
-
-  if (playPromise && typeof playPromise.then === "function") {
-    playPromise.then(function() {
-      updateMusicButton(true);
-    }).catch(function() {
-      updateMusicButton(false);
-      musicButton.textContent = "♪ Нажми для музыки";
-    });
-  }
+  // Autoplay intentionally disabled.
+  // Music starts only after pressing the music button.
+  updateMusicButton(false);
 }
 
 if (musicButton && bgMusic) {
@@ -680,15 +669,6 @@ if (musicButton && bgMusic) {
       bgMusic.pause();
       updateMusicButton(false);
     }
-  });
-
-  document.addEventListener("click", function startOnFirstClick() {
-    if (bgMusic.paused) {
-      bgMusic.play().then(function() {
-        updateMusicButton(true);
-      }).catch(function() {});
-    }
-    document.removeEventListener("click", startOnFirstClick);
   });
 }
 
