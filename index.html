@@ -4,28 +4,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>COLUMBINA — итоги ивента</title>
+  <meta name="description" content="Сайт итогов ивента COLUMBINA: победители, все работы участников и оценки." />
   <link rel="stylesheet" href="style-columbina-plus.css?v=1" />
 </head>
 <body>
-  <div class="stars"></div><div class="moon-glow"></div>
+  <div class="stars"></div>
+  <div class="moon-glow"></div>
+
   <header class="topbar">
     <a class="brand" href="./" data-route="home">COLUMBINA</a>
+
     <nav class="topnav">
       <a href="?page=results" data-route="results">Итоги</a>
       <a href="?page=winners" data-route="winners">Победители</a>
       <a href="?page=all" data-route="all">Все работы</a>
-      <a href="?page=credits" data-route="credits">Credits</a>
     </nav>
+
     <button id="music-toggle" class="music-btn is-muted" type="button">♪ Музыка</button>
     <audio id="bg-music" src="audio/theme.mp3" autoplay loop preload="auto"></audio>
   </header>
+
   <main id="app"></main>
+
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="lightbox__close" aria-label="Закрыть">×</button>
     <img id="lightbox-img" alt="" />
     <div id="lightbox-caption" class="lightbox-caption"></div>
   </div>
+
   <script src="data.js?v=1"></script>
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
